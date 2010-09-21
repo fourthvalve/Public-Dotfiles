@@ -1,0 +1,30 @@
+export EDITOR='mate -w'
+alias showdots='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
+alias hidedots='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
+
+alias listeners='sudo lsof -i -P | grep -i "listen"'
+
+alias airport_on='networksetup -setairportpower "Airport" on'
+alias airport_off='networksetup -setairportpower "Airport" off'
+alias network='networksetup -getcurrentlocation'
+alias network_list='networksetup -listlocations'
+alias myip='networksetup -getinfo "Airport"'
+
+alias urls='/usr/bin/dscl localhost -list /Local/Default/Hosts'
+function newurl() { sudo /usr/bin/dscl localhost -create /Local/Default/Hosts/$@ IPAddress 127.0.0.1; }
+function removeurl() { sudo /usr/bin/dscl localhost -delete /Local/Default/Hosts/$@; }
+
+function proxy {
+  networksetup -setwebproxystate "Airport" on
+  networksetup -setsecurewebproxystate "Airport" on
+  networksetup -setwebproxystate "Ethernet" on
+  networksetup -setsecurewebproxystate "Ethernet" on
+  squid
+}
+function noproxy {
+  networksetup -setwebproxystate "Airport" off
+  networksetup -setsecurewebproxystate "Airport" off
+  networksetup -setwebproxystate "Ethernet" off
+  networksetup -setsecurewebproxystate "Ethernet" off
+  squid -k kill
+}

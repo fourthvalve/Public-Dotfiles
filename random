@@ -1,0 +1,30 @@
+alias m='mate .'
+alias home='cd ~'
+alias l='gls $LS_OPTIONS -lahF'
+alias h='history'
+alias c='clear'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ebash='mate ~/.bash_profile'
+alias rbash='source ~/.bash_profile'
+alias f='open .'
+
+alias apstart='sudo apachectl start'
+alias apstop='sudo apachectl stop'
+alias apr='sudo apachectl graceful'
+
+alias squids='squid -k kill'
+alias squidr='squid -k kill && squid'
+
+alias install='brew install'
+alias uninstall='brew uninstall'
+
+function parse_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return 0
+  echo ${ref#refs/heads/}
+}
+function prompt_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return 0
+  echo "("${ref#refs/heads/}")"
+}
+PS1="$GRAY[\$(date +%H:%M) \w$BLUE_\$(prompt_git_branch)$GRAY]\$ "

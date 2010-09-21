@@ -1,0 +1,5 @@
+alias ci="mvn clean install"
+alias qi="mvn clean install -Dmaven.test.skip=true -Dfindbugs.skip=true"
+alias clean="mvn clean"
+alias junit="mvn clean compiler:compile compiler:testCompile resources:resources resources:testResources surefire:test"
+alias jcover="mvn clean compiler:compile compiler:testCompile resources:resources resources:testResources cobertura:check -Dfindbugs.skip=true"
