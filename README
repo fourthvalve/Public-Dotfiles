@@ -1,0 +1,8 @@
+This collection of files is my library of aliases and other bash stuff that should be applicable to anyone who is using a setup similar to mine.
+
+# OS X (probably 10.5+ due to the dscl commands)
+# bash
+# git
+# maven
+
+I just source the main file in my .bash_profile, but it should be fine to source each file individually to leave certain things out.

@@ -1,0 +1,5 @@
+source ~/.terminal/public/colors
+source ~/.terminal/public/git
+source ~/.terminal/public/mvn
+source ~/.terminal/public/random
+source ~/.terminal/public/mac
